@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Quizzr</string>
+    <string name="ma_btn_start">Start Quiz</string>
+    <string name="ma_tv_intro">Test your outer space knowledge. \nAll the questions are very simple. \nRead and practice more...</string>
+    <string name="qa_btn_submit">Submit</string>
+    <string name="qa_btn_next">Next</string>
+    <string name="qa_btn_prev">Prev</string>
+    <string name="ra_btn_exit">Exit</string>
+
+    <string name="quiz_ques_01">Which galaxy contains our Solar System</string>
+    <string name="quiz_type_01">FREEFORM</string>
+    <string name="quiz_choice_01a">Milky Way</string>
+
+
+    <string name="quiz_ques_02">Which are the moons of Mars</string>
+    <string name="quiz_type_02">MANY</string>
+    <string name="quiz_choice_02a">Phobos</string>
+    <string name="quiz_choice_02b">Thebe</string>
+    <string name="quiz_choice_02c">Deimos</string>
+    <string name="quiz_choice_02d">Dia</string>
+    <string name="quiz_ans_02a">1,3</string>
+
+    <string name="quiz_ques_03">Can you hear sounds in space?</string>
+    <string name="quiz_type_03">ONE</string>
+    <string name="quiz_choice_03a">Yes</string>
+    <string name="quiz_choice_03b">No</string>
+    <string name="quiz_ans_03a">2</string>
+    <string name="quiz_explain_03">No. Sound waves need a medium to travel through, and since there is no atmosphere in outer space there is utter silence.</string>
+
+    <string name="quiz_ques_04">A planet is a star</string>
+    <string name="quiz_type_04">ONE</string>
+    <string name="quiz_choice_04a">False</string>
+    <string name="quiz_choice_04b">True</string>
+    <string name="quiz_ans_04a">1</string>
+    <string name="quiz_explain_04">False. A planet is a celestial body that is in orbit around the Sun, while a star is a luminous ball of gas held together by its own gravity.</string>
+
+</resources>
