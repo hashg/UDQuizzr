@@ -2,8 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/qa_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/qa_tv_text"
@@ -12,76 +20,87 @@
         android:minLines="3"
         tools:text="Test Question?"/>
 
-    <EditText
-        android:id="@+id/qa_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minLines="2"
-        />
-
-    <RadioGroup
-        android:id="@+id/qa_radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/qa_radio_01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Radio 01" />
-        <RadioButton
-            android:id="@+id/qa_radio_02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Radio 02" />
-    </RadioGroup>
-
     <LinearLayout
-        android:id="@+id/qa_checbox_group"
+        android:id="@+id/qa_container_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <CheckBox
-            android:id="@+id/qa_checkbox_01"
+
+        <EditText
+            android:id="@+id/qa_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Radio 01"/>
-        <CheckBox
-            android:id="@+id/qa_checkbox_02"
+            android:inputType="text|textCapWords|textNoSuggestions"
+            android:minLines="2" />
+
+        <RadioGroup
+            android:id="@+id/qa_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/qa_radio_01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Radio 01" />
+
+            <RadioButton
+                android:id="@+id/qa_radio_02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Radio 02" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/qa_checbox_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Radio 02"/>
-        <CheckBox
-            android:id="@+id/qa_checkbox_03"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/qa_checkbox_01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Checkbox 01" />
+
+            <CheckBox
+                android:id="@+id/qa_checkbox_02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Checkbox 02" />
+
+            <CheckBox
+                android:id="@+id/qa_checkbox_03"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Checkbox 03" />
+
+            <CheckBox
+                android:id="@+id/qa_checkbox_04"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Checkbox 04" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/qa_btn_prev"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Radio 03"/>
-        <CheckBox
-            android:id="@+id/qa_checkbox_04"
+            android:text="@string/qa_btn_prev" />
+
+        <Button
+            android:id="@+id/qa_btn_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Radio 04"/>
+            android:text="@string/qa_btn_next" />
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/qa_btn_prev"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onBtnPrev"
-        android:text="@string/qa_btn_prev" />
-
-    <Button
-        android:id="@+id/qa_btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onBtnNext"
-        android:text="@string/qa_btn_next" />
 
     <Button
         android:id="@+id/qa_btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onBtnSubmit"
-        android:visibility="gone"
-        android:text="@string/qa_btn_submit" />
+        android:text="@string/qa_btn_submit"
+        android:visibility="gone" />
 
 </LinearLayout>
