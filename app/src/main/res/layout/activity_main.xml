@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/ma_container_style"
     tools:context="com.example.hgowda.quizzr.MainActivity">
 
     <TextView
+        android:id="@+id/ma_tv_welcome"
+        style="@style/ma_tv_welcome_style"
+        android:text="@string/ma_tv_welcome" />
+
+    <TextView
         android:id="@+id/ma_tv_intro"
-        android:text="@string/ma_tv_intro"
-        style="@style/mainTextStyle" />
+        style="@style/ma_tv_intro_style"
+        android:text="@string/ma_tv_intro" />
 
     <Button
         android:id="@+id/ma_btn_start"
-        android:text="@string/ma_btn_start"
+        style="@style/qa_btn_style"
         android:onClick="onBtnStart"
-        style="@style/mainButtonStyle" />
+        android:text="@string/ma_btn_start" />
 
 </RelativeLayout>

@@ -1,45 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
     <style name="qa_quiz_view_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:layout_marginBottom">8dp</item>
-    </style>
-
-    <style name="qa_tv_text_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">36sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_below">@id/qa_image_view</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">36dp</item>
-    </style>
-
-    <style name="qa_radio_btn_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">36sp</item>
-        <item name="android:paddingLeft">16dp</item>
-    </style>
-
-    <style name="qa_checkbox_btn_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">36sp</item>
-        <item name="android:paddingLeft">16dp</item>
     </style>
 
     <style name="qa_btn_style">
@@ -49,6 +19,7 @@
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:textSize">24sp</item>
         <item name="android:padding">8dp</item>
     </style>
@@ -58,6 +29,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:minLines">3</item>
         <item name="android:layout_above">@id/qa_btn_exit</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:paddingBottom">24dp</item>
         <item name="android:gravity">end</item>
@@ -68,6 +40,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_above">@id/qa_result_intro</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">56sp</item>
@@ -78,6 +51,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_above">@id/qa_result_text</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">48sp</item>
@@ -88,46 +62,26 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_above">@id/qa_btn_submit</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:paddingBottom">24dp</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="qa_image_view_style">
-        <item name="android:contentDescription">quiz image</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:scaleType">centerCrop</item>
-        <item name="android:layout_alignParentTop">true</item>
-    </style>
-
-    <style name="qa_edit_text_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:inputType">text|textCapWords|textNoSuggestions</item>
-        <item name="android:layout_above">@id/qa_btn_next</item>
-        <item name="android:layout_marginBottom">32dp</item>
-        <item name="android:textSize">24sp</item>
-    </style>
-
     <style name="qa_result_view_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:visibility">gone</item>
     </style>
 
-    <style name="qa_group_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingBottom">32dp</item>
-    </style>
-
     <style name="ma_container_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginEnd">16dp</item>
         <item name="android:layout_marginRight">16dp</item>
         <item name="android:layout_marginBottom">8dp</item>
     </style>
@@ -136,6 +90,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_above">@id/ma_tv_intro</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">56sp</item>
@@ -146,10 +101,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:minLines">3</item>
         <item name="android:layout_above">@id/ma_btn_start</item>
+        <item name="android:layout_alignParentEnd">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:paddingBottom">24dp</item>
         <item name="android:gravity">end</item>
         <item name="android:textSize">16sp</item>
     </style>
-
 </resources>

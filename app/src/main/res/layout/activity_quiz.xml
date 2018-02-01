@@ -6,101 +6,115 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/qa_quiz_view"
+        style="@style/qa_quiz_view_style">
 
-    <ImageView
-        android:id="@+id/qa_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop" />
+        <ImageView
+            android:id="@+id/qa_image_view"
+            style="@style/qa_image_view_style" />
 
-    <TextView
-        android:id="@+id/qa_tv_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minLines="3"
-        tools:text="Test Question?"/>
-
-    <LinearLayout
-        android:id="@+id/qa_container_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        <TextView
+            android:id="@+id/qa_tv_text"
+            style="@style/qa_tv_text_style"
+            tools:text="Test Question?" />
 
         <EditText
             android:id="@+id/qa_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text|textCapWords|textNoSuggestions"
-            android:minLines="2" />
+            style="@style/qa_edit_text_style" />
 
         <RadioGroup
             android:id="@+id/qa_radio_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/qa_group_style"
+            android:layout_above="@id/qa_btn_next">
 
             <RadioButton
                 android:id="@+id/qa_radio_01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/qa_radio_btn_style"
                 tools:text="Radio 01" />
 
             <RadioButton
                 android:id="@+id/qa_radio_02"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/qa_radio_btn_style"
                 tools:text="Radio 02" />
         </RadioGroup>
 
         <LinearLayout
             android:id="@+id/qa_checbox_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/qa_group_style"
+            android:layout_above="@id/qa_btn_next"
             android:orientation="vertical">
 
             <CheckBox
                 android:id="@+id/qa_checkbox_01"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/qa_checkbox_btn_style"
                 tools:text="Checkbox 01" />
 
             <CheckBox
                 android:id="@+id/qa_checkbox_02"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/qa_checkbox_btn_style"
                 tools:text="Checkbox 02" />
 
             <CheckBox
                 android:id="@+id/qa_checkbox_03"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/qa_checkbox_btn_style"
                 tools:text="Checkbox 03" />
 
             <CheckBox
                 android:id="@+id/qa_checkbox_04"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/qa_checkbox_btn_style"
                 tools:text="Checkbox 04" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/qa_btn_prev"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/qa_btn_prev" />
-
-        <Button
             android:id="@+id/qa_btn_next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/qa_btn_style"
             android:text="@string/qa_btn_next" />
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/qa_submit_view"
+        style="@style/qa_result_view_style">
+
+        <TextView
+            android:id="@+id/qa_submit_text"
+            style="@style/qa_submit_text_style"
+            android:text="@string/qa_txt_submit" />
 
     <Button
         android:id="@+id/qa_btn_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/qa_btn_submit"
-        android:visibility="gone" />
+        style="@style/qa_btn_style"
+        android:text="@string/qa_btn_submit" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/qa_result_view"
+        style="@style/qa_result_view_style">
+
+        <TextView
+            android:id="@+id/qa_result_header"
+            style="@style/qa_result_header_style"
+            android:text="@string/qa_result_header"
+            tools:text="Score" />
+
+        <TextView
+            android:id="@+id/qa_result_text"
+            style="@style/qa_result_text_style"
+            tools:text="5/8" />
+
+        <TextView
+            android:id="@+id/qa_result_intro"
+            style="@style/qa_result_intro_style"
+            android:text="@string/qa_result_intro" />
+
+        <Button
+            android:id="@+id/qa_btn_exit"
+            style="@style/qa_btn_style"
+            android:text="@string/qa_btn_exit" />
+
+    </RelativeLayout>
 
 </LinearLayout>

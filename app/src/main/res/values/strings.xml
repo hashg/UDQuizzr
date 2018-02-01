@@ -1,18 +1,21 @@
 <resources>
     <string name="app_name">Quizzr</string>
-    <string name="ma_btn_start">Start Quiz</string>
-    <string name="ma_tv_intro">Test your outer space knowledge. \nAll the questions are very simple. \nRead and practice more...</string>
+    <string name="ma_btn_start">Let\'s Go!</string>
+    <string name="ma_tv_welcome">Welcome</string>
+    <string name="ma_tv_intro">Do you know about outer space?\n Let\'s test how much you are aware about it.\n Either way you will learn something new today.</string>
+    <string name="qa_txt_submit">Well Done!\nWe are almost done.\nLet\'s submit and checkout the score.</string>
+    <string name="qa_result_intro">Wow! that\'s a great score.\n Congrats you have scored above many users.</string>
+    <string name="qa_result_header">Score</string>
     <string name="qa_btn_submit">Submit</string>
     <string name="qa_btn_next">Next</string>
     <string name="qa_btn_prev">Prev</string>
-    <string name="ra_btn_exit">Exit</string>
+    <string name="qa_btn_exit">Exit</string>
 
-    <string name="quiz_ques_01">Which galaxy contains our Solar System</string>
+    <string name="quiz_ques_01">Which galaxy contains our Solar System?</string>
     <string name="quiz_type_01">FREEFORM</string>
     <string name="quiz_choice_01a">Milky Way</string>
 
-
-    <string name="quiz_ques_02">Which are the moons of Mars</string>
+    <string name="quiz_ques_02">Which are the moons of Mars?</string>
     <string name="quiz_type_02">MANY</string>
     <string name="quiz_choice_02a">Phobos</string>
     <string name="quiz_choice_02b">Thebe</string>
@@ -27,11 +30,42 @@
     <string name="quiz_ans_03a">2</string>
     <string name="quiz_explain_03">No. Sound waves need a medium to travel through, and since there is no atmosphere in outer space there is utter silence.</string>
 
-    <string name="quiz_ques_04">A planet is a star</string>
+    <string name="quiz_ques_04">A planet is a star?</string>
     <string name="quiz_type_04">ONE</string>
     <string name="quiz_choice_04a">False</string>
     <string name="quiz_choice_04b">True</string>
     <string name="quiz_ans_04a">1</string>
     <string name="quiz_explain_04">False. A planet is a celestial body that is in orbit around the Sun, while a star is a luminous ball of gas held together by its own gravity.</string>
+
+    <string name="quiz_ques_05">Which of these planets has no moons?</string>
+    <string name="quiz_type_05">MANY</string>
+    <string name="quiz_choice_05a">Mercury</string>
+    <string name="quiz_choice_05b">Venus</string>
+    <string name="quiz_choice_05c">Earth</string>
+    <string name="quiz_choice_05d">Mars</string>
+    <string name="quiz_ans_05a">1,2</string>
+    <string name="quiz_explain_05">Both Mercury and Venus are moon-less.</string>
+
+    <string name="quiz_ques_06">Which of these refers to the mass over which a star will become a black hole? </string>
+    <string name="quiz_type_06">ONE</string>
+    <string name="quiz_choice_06a">Chandrasekhar limit</string>
+    <string name="quiz_choice_06b">Planck Mass</string>
+    <string name="quiz_ans_06a">1</string>
+    <string name="quiz_explain_06">It\'s named after Subrahmanyan Chandrasekhar, the physicist who independently calculated the limit at the age of 19 in India. The Planck mass is much, much, much smaller.</string>
+
+    <string name="quiz_ques_07">Which of these can be formed in a supernova?</string>
+    <string name="quiz_type_07">ONE</string>
+    <string name="quiz_choice_07a">White dwarf</string>
+    <string name="quiz_choice_07b">Neutron star</string>
+    <string name="quiz_ans_07a">2</string>
+    <string name="quiz_explain_07">A supernova can form a black hole or a neutron star. A white dwarf form when a star doesn\'t have a large enough mass to go supernova.</string>
+
+    <string name="quiz_ques_08">Which galaxy is this?</string>
+    <string name="quiz_type_08">ONE</string>
+    <string name="quiz_choice_08a">Milky Way</string>
+    <string name="quiz_choice_08b">Andromeda</string>
+    <string name="quiz_ans_08a">2</string>
+    <string name="quiz_explain_08">The Andromeda Galaxy (M31) is the closest large galaxy to the Milky Way and is one of a few galaxies that can be seen unaided from the Earth.</string>
+
 
 </resources>

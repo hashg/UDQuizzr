@@ -8,9 +8,7 @@ import java.util.Arrays;
 /**
  * {@link Quiz} represents a structure to store question, answers and options. Along with verification logic.
  * It contains resource IDs for the Question, answers and optional image file for that question.
- */
-
-/**
+ *
  * Sample data
  *  { "Question 1", QTYPE.ONE, ["Answer11","Answer12","Answer13","Answer14"], [2] }
  *  { "Question 2", QTYPE.FREEFORM, ["Answer21"], [0], "a.jpg" }
@@ -22,27 +20,42 @@ public class Quiz {
 
     /** Constant value that represents no image is provided */
     private static final int NO_IMAGE_RESOURCE = -1;
-
-    public enum QTYPE {
-        ONE,
-        MANY,
-        FREEFORM
-    }
-
     /** String resource ID for the Question */
     private int mQuestion;
-
     /** ENUM information indicating what type of answer is expected for the Question */
     private QTYPE mType;
-
     /** String resource ID array of answer options */
     private int[] mChoices;
-
     /** Index locations of the correct answer/s in mChoices array */
     private int[] mAnswer;
-
     /** Image resource ID for the Question */
     private int mImageResourceId = NO_IMAGE_RESOURCE;
+    /**
+     * String resource ID array of users answer options
+     */
+    private int[] mUserChoices;
+    /**
+     * String resource ID array of users answer options
+     */
+    private Boolean mResult;
+
+    public Quiz(int mQuestion, QTYPE mType, int[] mChoices, int[] mAnswer) {
+        this.mQuestion = mQuestion;
+        this.mType = mType;
+        this.mChoices = mChoices;
+        this.mAnswer = mAnswer;
+        this.mResult = false;
+    }
+
+
+    public Quiz(int mQuestion, QTYPE mType, int[] mChoices, int[] mAnswer, int imageResourceId) {
+        this.mQuestion = mQuestion;
+        this.mType = mType;
+        this.mChoices = mChoices;
+        this.mAnswer = mAnswer;
+        this.mImageResourceId = imageResourceId;
+        this.mResult = false;
+    }
 
     public int getQuestion() {
         return mQuestion;
@@ -84,19 +97,20 @@ public class Quiz {
         this.mImageResourceId = mImageResourceId;
     }
 
-    public Quiz(int mQuestion, QTYPE mType, int[] mChoices, int[] mAnswer ) {
-        this.mQuestion = mQuestion;
-        this.mType = mType;
-        this.mChoices = mChoices;
-        this.mAnswer = mAnswer;
+    public int[] getUserChoices() {
+        return mUserChoices;
     }
 
-    public Quiz(int mQuestion, QTYPE mType, int[] mChoices, int[] mAnswer, int imageResourceId ) {
-        this.mQuestion = mQuestion;
-        this.mType = mType;
-        this.mChoices = mChoices;
-        this.mAnswer = mAnswer;
-        this.mImageResourceId = imageResourceId;
+    public void setUserChoices(int[] mUserChoices) {
+        this.mUserChoices = mUserChoices;
+    }
+
+    public Boolean getResult() {
+        return mResult;
+    }
+
+    public void setResult(Boolean mResult) {
+        this.mResult = mResult;
     }
 
     /**
@@ -109,10 +123,19 @@ public class Quiz {
     @Override
     public String toString() {
         return "Quiz{" +
-                "mQuestion='" + mQuestion + '\'' +
-                ", mAnswer='" + mAnswer + '\'' +
-                ", mChoices=" + Arrays.toString(mChoices) +
+                "mQuestion=" + mQuestion +
                 ", mType=" + mType +
+                ", mChoices=" + Arrays.toString(mChoices) +
+                ", mAnswer=" + Arrays.toString(mAnswer) +
+                ", mImageResourceId=" + mImageResourceId +
+                ", mUserChoices=" + Arrays.toString(mUserChoices) +
+                ", mResult=" + mResult +
                 '}';
+    }
+
+    public enum QTYPE {
+        ONE,
+        MANY,
+        FREEFORM
     }
 }

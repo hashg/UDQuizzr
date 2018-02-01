@@ -1,56 +1,65 @@
 package com.example.hgowda.quizzr;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by hgowda on 1/29/2018.
  */
 
-public class QuizActivity extends AppCompatActivity {
-    private ArrayList<Quiz> questionsList = new ArrayList<Quiz>() {{
+public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
+    public ArrayList<Quiz> questionsList = new ArrayList<Quiz>() {{
 //        add(new Quiz(R.id.quiz_ques_01, QTYPE mType, int[] mChoices, int[] mAnswer, int imageResourceId ))
-//        add(new Quiz(R.string.))
+        add(new Quiz(R.string.quiz_ques_08, Quiz.QTYPE.ONE, new int[]{R.string.quiz_choice_08a, R.string.quiz_choice_08b}, new int[]{2}, R.drawable.andromeda));
+        add(new Quiz(R.string.quiz_ques_05, Quiz.QTYPE.MANY, new int[]{R.string.quiz_choice_05a, R.string.quiz_choice_05b, R.string.quiz_choice_05c, R.string.quiz_choice_05d}, new int[]{1, 2}));
+        add(new Quiz(R.string.quiz_ques_04, Quiz.QTYPE.ONE, new int[]{R.string.quiz_choice_04a, R.string.quiz_choice_04b}, new int[]{1}));
         add(new Quiz(R.string.quiz_ques_01, Quiz.QTYPE.FREEFORM, new int[]{R.string.quiz_choice_01a}, new int[1]));
-        add(new Quiz(R.string.quiz_ques_02, Quiz.QTYPE.MANY, new int[]{R.string.quiz_choice_02a,R.string.quiz_choice_02b,R.string.quiz_choice_02c,R.string.quiz_choice_02d}, new int[]{1,3}));
         add(new Quiz(R.string.quiz_ques_03, Quiz.QTYPE.ONE, new int[]{R.string.quiz_choice_03a, R.string.quiz_choice_03b}, new int[]{2}));
-        add(new Quiz(R.string.quiz_ques_04, Quiz.QTYPE.ONE, new int[]{R.string.quiz_choice_04a,R.string.quiz_choice_04b}, new int[]{1}));
+        add(new Quiz(R.string.quiz_ques_02, Quiz.QTYPE.MANY, new int[]{R.string.quiz_choice_02a, R.string.quiz_choice_02b, R.string.quiz_choice_02c, R.string.quiz_choice_02d}, new int[]{1, 3}));
+        add(new Quiz(R.string.quiz_ques_06, Quiz.QTYPE.ONE, new int[]{R.string.quiz_choice_06a, R.string.quiz_choice_06b}, new int[]{1}));
+        add(new Quiz(R.string.quiz_ques_07, Quiz.QTYPE.ONE, new int[]{R.string.quiz_choice_07a, R.string.quiz_choice_07b}, new int[]{2}));
+
     }};
-
-    private Quiz currentQuestion;
-    static int results;
-    private int index = 0;
-
-    TextView quizTextView ;
-    View radioGroup ;
-    View checkboxGroup ;
+    View quizContainer, submitContainer, resultContainer, checkboxGroup;
+    ImageView imageView;
+    TextView quizTextView, submitTextView, resultTextView;
+    RadioGroup radioGroup;
     RadioButton[] radioArray ;
     CheckBox[] checkboxArray ;
     EditText editText ;
-
-    Button btnPrev ;
-    Button btnNext ;
-    Button btnSubmit ;
-
+    Button btnNext, btnSubmit, btnExit;
+    private Quiz currentQuestion;
+    private int index = 0;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        quizTextView = (TextView) findViewById(R.id.qa_tv_text);
+        quizContainer = findViewById(R.id.qa_quiz_view);
+        submitContainer = findViewById(R.id.qa_submit_view);
+        resultContainer = findViewById(R.id.qa_result_view);
+
+        imageView = findViewById(R.id.qa_image_view);
+        quizTextView = findViewById(R.id.qa_tv_text);
+        submitTextView = findViewById(R.id.qa_submit_text);
+        resultTextView = findViewById(R.id.qa_result_text);
 
         radioGroup = findViewById(R.id.qa_radio_group);
         checkboxGroup = findViewById(R.id.qa_checbox_group);
@@ -59,47 +68,110 @@ public class QuizActivity extends AppCompatActivity {
         checkboxArray = new CheckBox[] {findViewById(R.id.qa_checkbox_01), findViewById(R.id.qa_checkbox_02), findViewById(R.id.qa_checkbox_03), findViewById(R.id.qa_checkbox_04)};
         editText = findViewById(R.id.qa_edit_text);
 
-        btnPrev = findViewById(R.id.qa_btn_prev);
         btnNext = findViewById(R.id.qa_btn_next);
+        btnNext.setOnClickListener(this);
+
         btnSubmit = findViewById(R.id.qa_btn_submit);
+        btnSubmit.setOnClickListener(this);
+
+        btnExit = findViewById(R.id.qa_btn_exit);
+        btnExit.setOnClickListener(this);
 
         displayQuiz();
     }
 
-    public void onBtnSubmit(View view) {
-        Intent resultIntent = new Intent(QuizActivity.this, ResultActivity.class);
-        startActivity(resultIntent);
-    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            /*All buttons*/
+            case R.id.qa_btn_next:
+                checkAnswer();
+                if (index >= questionsList.size() - 1) {
+                    quizContainer.setVisibility(View.GONE);
+                    submitContainer.setVisibility(View.VISIBLE);
+                    return;
+                }
+                index += 1;
 
-    public void onBtnNext(View view) {
-        if (index >= questionsList.size()-1) {
-            btnPrev.setVisibility(View.GONE);
-            btnNext.setVisibility(View.GONE);
-            btnSubmit.setVisibility(View.VISIBLE);
-            return;
+                displayQuiz();
+                break;
+
+            case R.id.qa_btn_submit:
+                submitContainer.setVisibility(View.GONE);
+                resultContainer.setVisibility(View.VISIBLE);
+                displayResults();
+                break;
+
+            case R.id.qa_btn_exit:
+                Intent intent = new Intent(QuizActivity.this, MainActivity.class);
+                startActivity(intent);
+                break;
+
+            default:
+                break;
         }
-        index += 1;
-        displayQuiz();
     }
 
-    public void onBtnPrev(View view) {
-        if (index < 0)
-            return;
-        index -= 1;
-        displayQuiz();
+    public void checkAnswer() {
+        currentQuestion = questionsList.get(index);
+        int[] ans = currentQuestion.getAnswer();
+        int[] userChoices = new int[]{0, 0, 0, 0};
+
+        if (currentQuestion.getType() == Quiz.QTYPE.ONE) {
+            for (int i = 0; i < radioArray.length; i++) {
+                if (radioArray[i].isChecked()) {
+                    currentQuestion.setUserChoices(new int[]{i + 1});
+                    if (i + 1 == ans[0]) {
+                        currentQuestion.setResult(true);
+                        Log.d("QuizActCheckAnswerRadio", String.valueOf(i) + ":" + String.valueOf(ans[0] - 1));
+                    }
+                }
+            }
+        } else if (currentQuestion.getType() == Quiz.QTYPE.MANY) {
+            for (int i = 0, j = 0; i < checkboxArray.length && j < ans.length; i++) {
+                if (checkboxArray[i].isChecked()) {
+                    userChoices[i] = i + 1;
+                    currentQuestion.setResult(true);
+                    if (i + 1 != ans[j]) {
+                        currentQuestion.setResult(false);
+                    }
+                    Log.d("QuizActCheckAnswerCheck", String.valueOf(i) + ":" + String.valueOf(ans[j] - 1));
+                    j++;
+                }
+            }
+            currentQuestion.setUserChoices(userChoices);
+        } else /* FREEFORM) */ {
+            if (editText.getText().toString().compareToIgnoreCase(getString(currentQuestion.getChoices()[0])) == 0)
+                currentQuestion.setResult(true);
+            Log.v("QuizActCheckAnswerCheck", editText.getText() + ":" + getString(currentQuestion.getChoices()[0]));
+        }
     }
 
-    public int getResults() {
-        return results;
+    public void resetAnswer() {
+        editText.setText("");
+
+        for (CheckBox checkbox : checkboxArray) {
+            checkbox.setChecked(false);
+        }
+
+        radioGroup.clearCheck();
     }
 
     public void displayQuiz() {
-        currentQuestion = questionsList.get(index);
-        quizTextView.setText(currentQuestion.getQuestion());
+        resetAnswer();
 
+        imageView.setVisibility(View.GONE);
         radioGroup.setVisibility(View.GONE);
         checkboxGroup.setVisibility(View.GONE);
         editText.setVisibility(View.GONE);
+
+        currentQuestion = questionsList.get(index);
+        quizTextView.setText(currentQuestion.getQuestion());
+
+        if (currentQuestion.hasImage()) {
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageResource(currentQuestion.getImageResourceId());
+        }
 
         if (currentQuestion.getType() == Quiz.QTYPE.ONE) {
             radioGroup.setVisibility(View.VISIBLE);
@@ -107,21 +179,33 @@ public class QuizActivity extends AppCompatActivity {
             int idx = 0;
             for (int choice:currentQuestion.getChoices()) {
                 radioArray[idx++].setText(choice);
-//                idx += idx;
-                Log.d("QuizActivity", String.valueOf(choice) + " " + String.valueOf(idx));
             }
+
         } else if (currentQuestion.getType() == Quiz.QTYPE.MANY) {
             checkboxGroup.setVisibility(View.VISIBLE);
 
             int idx = 0;
             for (int choice:currentQuestion.getChoices()) {
                 checkboxArray[idx++].setText(choice);
-//                idx += idx;
-                Log.d("QuizActivity", String.valueOf(choice));
             }
+
         } else /* FREEFORM) */ {
             editText.setVisibility(View.VISIBLE);
+            editText.requestFocus();
         }
+    }
+
+    public void displayResults() {
+
+        int count = 0;
+        for (int i = 0; i < questionsList.size(); i++) {
+            Log.d("QuizActivity::Results", questionsList.get(i).toString());
+            if (questionsList.get(i).getResult()) {
+                count++;
+            }
+        }
+
+        resultTextView.setText(count + "/" + questionsList.size());
     }
 
 
